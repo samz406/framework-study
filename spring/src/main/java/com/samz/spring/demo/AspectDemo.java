@@ -15,9 +15,7 @@ public class AspectDemo {
     public static void main(String[] args) {
 
         Map<String, String> map = new HashMap<>();
-
         AspectJProxyFactory aspectJProxyFactory = new AspectJProxyFactory(map);
-
         aspectJProxyFactory.addAdvice((MethodBeforeAdvice) (method, args1, target) -> {
             if ("get".equals(method.getName())) {
                 System.out.println("有人要开始获取值");

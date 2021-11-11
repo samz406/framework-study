@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83be6fcb-11d0-4461-9bae-c503858d786f" name="Default Changelist" comment="Merge branch 'main' of github.com:samz406/framework-study into main&#10;&#10;# Conflicts:&#10;#&#9;spring/mvnw&#10;#&#9;spring/pom.xml">
-      <change beforePath="$PROJECT_DIR$/spring/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/samz/spring/demo/ApplicationDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/samz/spring/demo/ApplicationDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring/src/main/java/com/samz/spring/demo/AspectDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring/src/main/java/com/samz/spring/demo/AspectDemo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
