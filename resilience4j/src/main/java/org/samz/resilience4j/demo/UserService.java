@@ -1,5 +1,8 @@
 package org.samz.resilience4j.demo;
 
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +18,16 @@ public class UserService {
 
         int i = 2 / 0;
         return "结果为" + i;
+    }
+
+    public int getAge(){
+
+        try {
+            TimeUnit.SECONDS.sleep(new Random().nextInt(15));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return 20;
     }
 
     public String getUserName(Integer num) {
