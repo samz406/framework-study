@@ -29,9 +29,9 @@ public class RateLimitDemo1 {
         CheckedRunnable restrictedCall = RateLimiter
                 .decorateCheckedRunnable(rateLimiter, userService::getUserName);
 
-        Try.run(restrictedCall)
-                .andThenTry(restrictedCall)
-                .onFailure((RequestNotPermitted throwable) -> userService.getUserName());
+//        Try.run(restrictedCall)
+//                .andThenTry(restrictedCall)
+//                .onFailure((RequestNotPermitted throwable) -> userService.getUserName());
 
     }
 }
