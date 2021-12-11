@@ -11,10 +11,13 @@ import io.github.resilience4j.ratelimiter.RateLimiterRegistry;
  * @Date: 2021/12/7 19:34
  * @Description:
  */
-public class RateLimitObj {
+public class RateLimitConf {
 
     public static RateLimiter getRateLimit() {
 
+        //limitRefreshPeriod 权限刷新的时间，每个周期结束后，RateLimiter将会把权限计数设置为limitForPeriod的值
+        //timeoutDuration 线程等待权限的默认等待时间
+        //limitForPeriod 一个限制刷新期间的可用权限数
         RateLimiterConfig config = RateLimiterConfig.custom()
                 .limitRefreshPeriod(Duration.ofMillis(1))
                 .limitForPeriod(10)
@@ -31,7 +34,7 @@ public class RateLimitObj {
 
 
         RateLimiter rateLimiterWithCustomConfig = rateLimiterRegistry
-                .rateLimiter("name2", config);
+                .rateLimiter("user", config);
 
         return rateLimiterWithCustomConfig;
 

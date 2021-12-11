@@ -1,12 +1,10 @@
 package org.samz.resilience4j.demo;
 
-import org.apache.commons.logging.Log;
-
+import io.github.resilience4j.bulkhead.Bulkhead;
 import io.github.resilience4j.ratelimiter.RateLimiter;
 import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import io.vavr.CheckedRunnable;
 import io.vavr.control.Try;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -23,15 +21,13 @@ public class RateLimitDemo1 {
 
         UserService userService = new UserService();
 
-        final RateLimiter rateLimiter = RateLimitObj.getRateLimit();
+        final RateLimiter rateLimiter = RateLimitConf.getRateLimit();
 
-        // Decorate your call to BackendService.doSomething()
-        CheckedRunnable restrictedCall = RateLimiter
-                .decorateCheckedRunnable(rateLimiter, userService::getUserName);
+        CheckedRunnable checkedRunnable = RateLimiter
+                .decorateCheckedRunnable(rateLimiter, userService::getAge);
 
-//        Try.run(restrictedCall)
-//                .andThenTry(restrictedCall)
-//                .onFailure((RequestNotPermitted throwable) -> userService.getUserName());
+        Try.run(checkedRunnable).onFailure((RequestNotPermitted throwable)->{System.out.println("");});
+
 
     }
 }
