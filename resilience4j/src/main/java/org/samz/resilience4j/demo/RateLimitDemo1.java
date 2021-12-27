@@ -24,9 +24,10 @@ public class RateLimitDemo1 {
         final RateLimiter rateLimiter = RateLimitConf.getRateLimit();
 
         CheckedRunnable checkedRunnable = RateLimiter
-                .decorateCheckedRunnable(rateLimiter, userService::getAge);
+                .decorateCheckedRunnable(rateLimiter, userService::getUserName);
 
-      //  Try.run(checkedRunnable).onFailure((RequestNotPermitted throwable)->{System.out.println("");});
+      Try.run(checkedRunnable).onFailure(System.out::println);
+
 
 
     }
