@@ -1,10 +1,13 @@
 package org.samz.shardjdbc;
 
 import javax.annotation.Resource;
+import javax.naming.ldap.PagedResultsControl;
 
 import org.junit.jupiter.api.Test;
+import org.samz.shardjdbc.entity.Address;
 import org.samz.shardjdbc.entity.Dict;
 import org.samz.shardjdbc.entity.User;
+import org.samz.shardjdbc.mapper.AddressMapper;
 import org.samz.shardjdbc.mapper.DictMapper;
 import org.samz.shardjdbc.mapper.UserMapper;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +20,8 @@ class ShardJdbcApplicationTests {
 
     @Resource
     private DictMapper dictMapper;
+    @Resource
+    private AddressMapper addressMapper;
     @Test
      void contextLoads() {
     }
@@ -46,6 +51,19 @@ class ShardJdbcApplicationTests {
             dict.setValue("value"+i);
             dictMapper.insert(dict);
         }
+
+    }
+
+    @Test
+    public void addAddress(){
+
+        for (int i = 0; i < 10; i++) {
+
+            Address address = new Address();
+            address.setAddress("address "+ i);
+            addressMapper.insert(address);
+        }
+
 
     }
 
