@@ -20,6 +20,7 @@ public class UserController {
 
     @GetMapping("user")
     public String getUser(Integer num) {
+        System.out.println("1111111");
         return service.getUserName(num);
     }
 

@@ -1,5 +1,7 @@
 package com.samz.spring.demo.bean;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,4 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
+
+    @Resource
+    private RoleService roleService;
 }
