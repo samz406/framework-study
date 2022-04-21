@@ -19,12 +19,11 @@ public class Producer {
 
         defaultMQProducer.start();
 
+       // defaultMQProducer.setNamesrvAddr("127.0.0.1");
 
         Message message = new Message("TestTopic", ("Hello").getBytes());
 
-
-                defaultMQProducer.send(message);
-
+        defaultMQProducer.send(message);
 
 
     }
