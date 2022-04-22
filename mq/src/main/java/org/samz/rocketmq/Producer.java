@@ -17,13 +17,17 @@ public class Producer {
 
         DefaultMQProducer defaultMQProducer = new DefaultMQProducer("ProducerGroup");
 
+        defaultMQProducer.setNamesrvAddr("192.192.192.61:9876");
         defaultMQProducer.start();
 
        // defaultMQProducer.setNamesrvAddr("127.0.0.1");
 
-        Message message = new Message("TestTopic", ("Hello").getBytes());
 
-        defaultMQProducer.send(message);
+        for (int i = 0; i < 10; i++) {
+            Message message = new Message("TestTopic", ("Hello").getBytes());
+            defaultMQProducer.send(message);
+        }
+
 
 
     }
