@@ -1,10 +1,7 @@
 package com.samz.spring.demo.bean;
 
-import java.lang.reflect.Method;
-
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.springframework.cglib.proxy.MethodProxy;
 
 public class ProxyInterceptor implements MethodInterceptor {
 
