@@ -18,7 +18,7 @@ public class UserAspect {
     /**
      * Pointcut 配置，注入的入口
      */
-    @Pointcut("execution(public * *(..))")
+    @Pointcut("execution(public * getUser(..))")
     public void pointcut(){
 
         System.out.println("Pointcut method");
