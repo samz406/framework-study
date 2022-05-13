@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.annotation.Resource;
 
 import org.samz.jpa.repo.UserEntity;
+import org.samz.jpa.service.RoleService;
 import org.samz.jpa.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,9 @@ public class UserController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private RoleService roleService;
 
     @GetMapping("add")
     public void save() {
