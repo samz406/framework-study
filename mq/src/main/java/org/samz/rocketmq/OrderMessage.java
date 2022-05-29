@@ -30,7 +30,7 @@ public class OrderMessage {
         for (int i = 0; i < 100; i++) {
             int orderId = i % 10;
             String msg = "Hello RocketMQ" + i;
-            Message message = new Message("testOrderMsg", msg.getBytes());
+            Message message = new Message("testOrderMsg2", msg.getBytes());
             final SendResult send = producer.send(message, msgSelector, orderId);
 
             System.out.println(send);
