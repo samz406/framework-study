@@ -17,14 +17,14 @@ public class Producer {
 
         DefaultMQProducer defaultMQProducer = new DefaultMQProducer("ProducerGroup");
 
-        defaultMQProducer.setNamesrvAddr("192.192.192.61:9876");
+        defaultMQProducer.setNamesrvAddr("192.192.192.62:9876");
         defaultMQProducer.start();
 
        // defaultMQProducer.setNamesrvAddr("127.0.0.1");
 
 
-        for (int i = 0; i < 10; i++) {
-            Message message = new Message("TestTopic", ("Hello").getBytes());
+        for (int i = 0; i < 20; i++) {
+            Message message = new Message("SingleQueue", ("Hello").getBytes());
             defaultMQProducer.send(message);
         }
 

@@ -22,8 +22,8 @@ public class OrderMsgConsumer {
 
         DefaultMQPushConsumer defaultMQPushConsumer = new DefaultMQPushConsumer("ProducerGroup");
 
-        defaultMQPushConsumer.setNamesrvAddr("192.192.192.61:9876");
-        defaultMQPushConsumer.subscribe("testOrderMsg2", "*");
+        defaultMQPushConsumer.setNamesrvAddr("192.192.192.62:9876");
+        defaultMQPushConsumer.subscribe("SingleQueue", "*");
         defaultMQPushConsumer.setMessageModel(MessageModel.CLUSTERING);
 
         //  defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);

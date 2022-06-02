@@ -11,30 +11,36 @@ import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.Random;
 
-public class Consumer {
+/**
+ * @author: lilin
+ * @Date: 2022/6/1 17:53
+ * @Description:
+ */
+public class Consumer2 {
 
     public static void main(String[] args) throws MQClientException {
 
 
-        DefaultMQPushConsumer  defaultMQPushConsumer = new DefaultMQPushConsumer("ProducerGroup");
+        DefaultMQPushConsumer defaultMQPushConsumer = new DefaultMQPushConsumer("ProducerGroup2");
 
         defaultMQPushConsumer.setNamesrvAddr("192.192.192.62:9876");
         defaultMQPushConsumer.subscribe("SingleQueue","*");
         defaultMQPushConsumer.setMessageModel(MessageModel.CLUSTERING);
 
-       // defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
+      //  defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
 
         defaultMQPushConsumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
-//                try {
-//                    TimeUnit.SECONDS.sleep(10);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
+
                 System.out.printf("%s 获取的消息 %s \n", LocalDateTime.now(),msgs);
+
+                if (new Random(10).nextInt(10)== 5){
+                    return ConsumeConcurrentlyStatus.RECONSUME_LATER;
+                }
+
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });
