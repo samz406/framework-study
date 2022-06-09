@@ -14,6 +14,7 @@ public class UserService {
 
     public void getUser() {
 
+        int i = 2/0;
         System.out.printf("获取用户列表 \n");
     }
 
