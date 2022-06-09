@@ -28,6 +28,8 @@ public class Consumer2 {
         defaultMQPushConsumer.setNamesrvAddr("192.192.192.62:9876");
         defaultMQPushConsumer.subscribe("SingleQueue","*");
         defaultMQPushConsumer.setMessageModel(MessageModel.CLUSTERING);
+        defaultMQPushConsumer.setPullBatchSize(32);
+        defaultMQPushConsumer.setConsumeMessageBatchMaxSize(20);
 
       //  defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
 
