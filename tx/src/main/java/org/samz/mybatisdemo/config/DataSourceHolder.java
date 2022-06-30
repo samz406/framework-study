@@ -7,5 +7,24 @@ package org.samz.mybatisdemo.config;
  */
 public class DataSourceHolder {
 
-    public static void
+
+    private static final ThreadLocal<String> LOOKUP_KEY_HOLDER = new ThreadLocal();
+
+
+    public static String get() {
+
+        return LOOKUP_KEY_HOLDER.get();
+    }
+
+    public static void set(String key) {
+
+        LOOKUP_KEY_HOLDER.set(key);
+    }
+
+
+    public static void remove() {
+
+        LOOKUP_KEY_HOLDER.remove();
+    }
+
 }

@@ -1,12 +1,20 @@
 package org.samz.mybatisdemo.config;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import com.zaxxer.hikari.HikariDataSource;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author: lilin
@@ -14,21 +22,35 @@ import com.zaxxer.hikari.HikariDataSource;
  * @Description:
  */
 @Configuration
+@Slf4j
+@MapperScan("org.samz.mybatisdemo.mapper")
 public class DataSourceConfig {
 
+    @Bean("dataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.primary")
+    @Primary
+    public DataSource dataSource() {
+        log.info("init orderDataSource");
+        System.out.println("init orderDataSource");
+        return new HikariDataSource();
+    }
 
-    @Bean
-    @Qualifier("ORDER")
-    public DataSource orderDataSource() {
-
+    @Bean("productDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.ds2")
+    public DataSource productDataSource() {
+        log.info("init productDataSource");
+        System.out.println("init productDataSource");
         return new HikariDataSource();
     }
 
     @Bean
-    @Qualifier("PRODUCT")
-    public DataSource productDataSource() {
 
-        return new HikariDataSource();
+    public MyRoutingDataSource myRoutingDataSource() {
+
+        Map<Object, Object> targetDataSources = new HashMap<>();
+        targetDataSources.put("ds1", dataSource());
+        targetDataSources.put("ds2", productDataSource());
+        return new MyRoutingDataSource(dataSource(), targetDataSources);
     }
 
 
