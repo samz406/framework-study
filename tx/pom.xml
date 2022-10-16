@@ -63,6 +63,12 @@
             <artifactId>aspectjweaver</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-all</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
 
     </dependencies>
 
